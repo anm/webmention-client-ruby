@@ -41,8 +41,6 @@ module Webmention
       return unless endpoint
 
       Services::HttpRequestService.post(Addressable::URI.parse(endpoint), source: @source, target: target)
-    rescue IndieWeb::Endpoints::IndieWebEndpointsError => exception
-      raise Webmention.const_get(exception.class.name.split('::').last), exception
     end
 
     private
